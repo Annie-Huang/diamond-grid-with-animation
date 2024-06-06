@@ -15,6 +15,13 @@ img {
   gap: 0.25rem;
   grid-template-columns: repeat(6, var(--image-size));
 
+  /* As soon as you add grid-template-rows like the setting in grid-template-columns, it will place slot up as it got enough space for the second row and the third row
+     Make sure you don't have the "grid-row: span 2;" for the image.
+     Go to devtool to show grid lines so you can understand this better.
+  */
+  /*grid-template-rows: repeat(6, var(--image-size));*/
+  grid-template-rows: repeat(3, var(--image-size));
+
   img {
     aspect-ratio: 1;
     object-fit: cover;
