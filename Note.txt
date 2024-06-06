@@ -1,0 +1,7 @@
+Create a diamond grid with CSS (with a bonus animation)
+(https://www.youtube.com/watch?v=A5GXdjEOvos)
+
+https://codepen.io/kevinpowell/pen/NWmwYKr
+https://github.com/Annie-Huang/diamond-grid-with-animation
+
+-------------------------------------------------------------------------
