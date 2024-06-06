@@ -15,7 +15,7 @@ img {
   gap: 0.25rem;
   grid-template-columns: repeat(6, var(--image-size));
 
-  /* As soon as you add grid-template-rows like the setting in grid-template-columns, it will place slot up as it got enough space for the second row and the third row
+  /* As soon as you add grid-template-rows like the setting in grid-template-columns, it will place slot up as it got enough space for the second row and the third row (overflow effect)
      Make sure you don't have the "grid-row: span 2;" for the image.
      Go to devtool to show grid lines so you can understand this better.
   */
@@ -26,13 +26,21 @@ img {
     aspect-ratio: 1;
     object-fit: cover;
     grid-column: span 2;
-    /* Add the clippath to cut the diamond shape, it is getting from another tool which we will not learn about */
+    /* Add the clippath to cut the diamond shape, it is getting from another tool which we will not learn about
+       https://yqnn.github.io/svg-path-editor/
+     */
     clip-path: path(
       'M 80 20 C 100 0 100 0 120 20 C 140 40 160 60 180 80 C 200 100 200 100 180 120 C 160 140 140 160 120 180 C 100 200 100 200 80 180 C 60 160 40 140 20 120 C 0 100 0 100 20 80 Z'
     );
 
     &:nth-of-type(4) {
       grid-column: 2 / span 2;
+    }
+
+    &:hover {
+      clip-path: path(
+        'M 0 0 C 100 0 100 0 200 0 C 200 50 200 50 200 80 C 200 100 200 100 200 120 C 200 150 200 150 200 200 C 100 200 100 200 0 200 C 0 150 0 150 0 120 C 0 100 0 100 0 80 Z'
+      );
     }
   }
 }
