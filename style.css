@@ -45,5 +45,19 @@ img {
         'M 0 0 C 100 0 100 0 200 0 C 200 50 200 50 200 80 C 200 100 200 100 200 120 C 200 150 200 150 200 200 C 100 200 100 200 0 200 C 0 150 0 150 0 120 C 0 100 0 100 0 80 Z'
       );
     }
+
+    /* This is for move mouse off the image (unhover), without this, the previous hovered image will straight away behind other images.
+       This will have a delay to say for 500ms, we still want it to be in frontend of other images (z-index: 10; it can be any number greater than 0)
+    */
+    &:not(:hover) {
+      animation: zIndexHack 500ms;
+    }
+  }
+}
+
+@keyframes zIndexHack {
+  0%,
+  100% {
+    z-index: 10;
   }
 }
