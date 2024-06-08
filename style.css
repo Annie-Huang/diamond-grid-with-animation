@@ -10,22 +10,28 @@ img {
 }
 
 .gallery {
-  --image-size: 100px;
+  /*--image-size: 100px;*/
+  /* The reason that we need to do a calc is because we have a gap and the image is span 2 columns,
+     So without adding the gap space, the border-radius for the img will not show properly */
+  --img-size: calc(100px - 0.5rem / 2);
+
   display: grid;
-  gap: 0.25rem;
-  grid-template-columns: repeat(6, var(--image-size));
+  gap: 0.5rem;
+  grid-template-columns: repeat(6, var(--img-size));
 
   /* As soon as you add grid-template-rows like the setting in grid-template-columns, it will place slot up as it got enough space for the second row and the third row (overflow effect)
      Make sure you don't have the "grid-row: span 2;" for the image.
      Go to devtool to show grid lines so you can understand this better.
   */
   /*grid-template-rows: repeat(6, var(--image-size));*/
-  grid-template-rows: repeat(3, var(--image-size));
+  grid-template-rows: repeat(3, var(--img-size));
 
   img {
     aspect-ratio: 1;
     object-fit: cover;
     grid-column: span 2;
+    border-radius: 0.5rem;
+
     /* Add the clippath to cut the diamond shape, it is getting from another tool which we will not learn about
        https://yqnn.github.io/svg-path-editor/
      */
