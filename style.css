@@ -32,7 +32,7 @@ img {
     clip-path: path(
       'M 80 20 C 100 0 100 0 120 20 C 140 40 160 60 180 80 C 200 100 200 100 180 120 C 160 140 140 160 120 180 C 100 200 100 200 80 180 C 60 160 40 140 20 120 C 0 100 0 100 20 80 Z'
     );
-    transition: clip-path 500ms;
+    transition: filter 500ms, clip-path 500ms;
 
     &:nth-of-type(4) {
       grid-column: 2 / span 2;
@@ -46,13 +46,24 @@ img {
       );
     }
 
-    /* This is for move mouse off the image (unhover), without this, the previous hovered image will straight away behind other images.
+    /* This is for move mouse off the image (unhover), without this, the previous hovered image will straight away behind other images. (because we didn't set animiation to be 'forward')
        This will have a delay to say for 500ms, we still want it to be in frontend of other images (z-index: 10; it can be any number greater than 0)
     */
     &:not(:hover) {
       animation: zIndexHack 500ms;
     }
   }
+}
+
+/* Hover on the whole .gallery section become darker */
+.gallery:hover > img {
+  filter: brightness(0.5) saturate(0.5);
+}
+
+/* Reset the image on hover to be normal for brightness but more saturated when on hover,
+   so all the images except for the hover one will be darker if user just hover on 1 image */
+.gallery > img:hover {
+  filter: brightness(1) saturate(1.5);
 }
 
 @keyframes zIndexHack {
